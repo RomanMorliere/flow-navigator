@@ -6,40 +6,40 @@
 
 @layer base {
   :root {
-    --background: 46 50% 88%;
-    --foreground: 200 60% 20%;
+    --background: 39 42% 92%;
+    --foreground: 173 39% 18%;
 
-    --card: 46 50% 88%;
-    --card-foreground: 200 60% 20%;
+    --card: 39 42% 92%;
+    --card-foreground: 173 39% 18%;
 
-    --popover: 46 50% 88%;
-    --popover-foreground: 200 60% 20%;
+    --popover: 39 42% 92%;
+    --popover-foreground: 173 39% 18%;
 
-    --primary: 200 60% 37%;
-    --primary-foreground: 46 50% 95%;
+    --primary: 174 55% 27%;
+    --primary-foreground: 42 50% 95%;
 
-    --secondary: 200 40% 75%;
-    --secondary-foreground: 200 60% 15%;
+    --secondary: 205 34% 68%;
+    --secondary-foreground: 173 39% 18%;
 
-    --muted: 46 40% 82%;
-    --muted-foreground: 200 20% 40%;
+    --muted: 39 42% 84%;
+    --muted-foreground: 173 18% 35%;
 
-    --accent: 7 90% 42%;
-    --accent-foreground: 46 50% 95%;
+    --accent: 9 62% 51%;
+    --accent-foreground: 42 50% 95%;
 
-    --destructive: 7 90% 42%;
-    --destructive-foreground: 46 50% 95%;
+    --destructive: 9 62% 51%;
+    --destructive-foreground: 42 50% 95%;
 
-    --border: 200 30% 70%;
-    --input: 200 30% 70%;
-    --ring: 200 60% 37%;
+    --border: 173 22% 60%;
+    --input: 173 22% 60%;
+    --ring: 174 55% 27%;
 
     --radius: 0.5rem;
 
-    --jelly-bean: 200 60% 37%;
-    --sinbad: 200 40% 75%;
-    --sidecar: 46 50% 88%;
-    --milan-red: 7 90% 42%;
+    --jelly-bean: 174 55% 27%;
+    --sinbad: 205 34% 68%;
+    --sidecar: 39 46% 80%;
+    --milan-red: 9 62% 51%;
 
     --sidebar-background: 46 50% 85%;
     --sidebar-foreground: 200 60% 20%;

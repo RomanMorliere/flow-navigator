@@ -9,6 +9,7 @@ const Index = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [edgeHover, setEdgeHover] = useState<"left" | "right" | null>(null);
   const [activeScrollTop, setActiveScrollTop] = useState(0);
+  const currentConfig = SECTORS[currentIndex];
 
   const moveTo = useCallback(
     (nextIndex: number) => {
@@ -40,11 +41,11 @@ const Index = () => {
       onMouseLeave={() => setEdgeHover(null)}
     >
       <header className="pointer-events-none fixed left-0 top-0 z-40 flex w-full items-center justify-between px-5 py-5 md:px-8">
-        <div className="rounded-full border border-foreground/10 bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.35em] text-foreground/60">
+        <div className={`rounded-full border px-4 py-2 text-xs uppercase tracking-[0.35em] shadow-[0_10px_30px_rgba(0,0,0,0.06)] ${currentConfig.shellTint} ${currentConfig.borderTone} ${currentConfig.textTone}`}>
           MASH
         </div>
-        <div className="rounded-full border border-foreground/10 bg-white/70 px-5 py-2 text-xs uppercase tracking-[0.35em] text-foreground/70">
-          {SECTORS[currentIndex].pageName}
+        <div className={`rounded-full border px-5 py-2 text-xs uppercase tracking-[0.35em] shadow-[0_10px_30px_rgba(0,0,0,0.06)] ${currentConfig.shellTint} ${currentConfig.borderTone} ${currentConfig.textTone}`}>
+          {currentConfig.pageName}
         </div>
       </header>
 
@@ -63,7 +64,7 @@ const Index = () => {
       {currentIndex > 0 ? (
         <button
           onClick={() => moveTo(currentIndex - 1)}
-          className={`fixed left-4 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#25799B]/20 bg-[#25799B] p-3 text-white shadow-[0_10px_40px_rgba(37,121,155,0.24)] transition-all duration-200 md:left-6 ${
+          className={`fixed left-4 top-1/2 z-40 -translate-y-1/2 rounded-full border p-3 shadow-[0_10px_40px_rgba(0,0,0,0.18)] transition-all duration-200 md:left-6 ${SECTORS[currentIndex - 1].buttonTone} ${SECTORS[currentIndex - 1].borderTone} ${
             edgeHover === "left" ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-90"
           }`}
           aria-label="Previous sector"
@@ -75,7 +76,7 @@ const Index = () => {
       {currentIndex < SECTORS.length - 1 ? (
         <button
           onClick={() => moveTo(currentIndex + 1)}
-          className={`fixed right-4 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#CB1B03]/20 bg-[#CB1B03] p-3 text-white shadow-[0_10px_40px_rgba(203,27,3,0.24)] transition-all duration-200 md:right-6 ${
+          className={`fixed right-4 top-1/2 z-40 -translate-y-1/2 rounded-full border p-3 shadow-[0_10px_40px_rgba(0,0,0,0.18)] transition-all duration-200 md:right-6 ${SECTORS[currentIndex + 1].buttonTone} ${SECTORS[currentIndex + 1].borderTone} ${
             edgeHover === "right" ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-90"
           }`}
           aria-label="Next sector"
