@@ -1,11 +1,12 @@
 import { type FormEvent, useState } from "react";
-import { CONTACT, type SectorId } from "@/data/mash";
+import { CONTACT, getSectorConfig, type SectorId } from "@/data/mash";
 
 type ContactBlockProps = {
   sector: SectorId;
 };
 
 export function ContactBlock({ sector }: ContactBlockProps) {
+  const config = getSectorConfig(sector);
   const [status, setStatus] = useState("");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -41,47 +42,47 @@ export function ContactBlock({ sector }: ContactBlockProps) {
   }
 
   return (
-    <section className="rounded-[2rem] border border-foreground/10 bg-white/35 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.04)]">
+    <section className={`rounded-[2rem] border p-6 shadow-[0_18px_40px_rgba(0,0,0,0.10)] ${config.surfaceTint} ${config.borderTone}`}>
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Contact Us</p>
-          <h3 className="mt-2 text-2xl font-semibold text-foreground">{sector}</h3>
+          <p className={`text-xs uppercase tracking-[0.35em] ${config.mutedTone}`}>Contact Us</p>
+          <h3 className={`mt-2 text-2xl font-semibold ${config.textTone}`}>{sector}</h3>
         </div>
         <div className="flex flex-col items-start gap-2 text-sm">
-          <a className="transition hover:opacity-70" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-          <a className="transition hover:opacity-70" href={CONTACT.instagramUrl} target="_blank" rel="noreferrer">
+          <a className={`transition hover:opacity-70 ${config.textTone}`} href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          <a className={`transition hover:opacity-70 ${config.textTone}`} href={CONTACT.instagramUrl} target="_blank" rel="noreferrer">
             {CONTACT.instagramHandle}
           </a>
         </div>
       </div>
 
       <form className="grid gap-4 md:grid-cols-2" onSubmit={handleSubmit}>
-        <label className="grid gap-2 text-sm">
+        <label className={`grid gap-2 text-sm ${config.textTone}`}>
           <span>Your Email</span>
           <input
-            className="h-12 rounded-full border border-foreground/15 bg-background/90 px-5 outline-none transition focus:border-foreground/40"
+            className="h-12 rounded-full border border-[#25799B]/30 bg-white px-5 outline-none transition focus:border-[#CB1B03]"
             name="email"
             type="email"
             required
           />
         </label>
         <div className="hidden md:block" />
-        <label className="grid gap-2 text-sm md:col-span-2">
+        <label className={`grid gap-2 text-sm md:col-span-2 ${config.textTone}`}>
           <span>Message</span>
           <textarea
-            className="min-h-36 rounded-[1.5rem] border border-foreground/15 bg-background/90 px-5 py-4 outline-none transition focus:border-foreground/40"
+            className="min-h-36 rounded-[1.5rem] border border-[#25799B]/30 bg-white px-5 py-4 outline-none transition focus:border-[#CB1B03]"
             name="message"
             required
           />
         </label>
         <div className="flex flex-wrap items-center gap-4 md:col-span-2">
           <button
-            className="rounded-full bg-foreground px-6 py-3 text-sm font-medium text-background transition hover:opacity-85"
+            className={`rounded-full px-6 py-3 text-sm font-medium transition hover:opacity-85 ${config.buttonTone}`}
             type="submit"
           >
             Send Message
           </button>
-          <p className="text-sm text-foreground/65" aria-live="polite">{status}</p>
+          <p className={`text-sm ${config.mutedTone}`} aria-live="polite">{status}</p>
         </div>
       </form>
     </section>

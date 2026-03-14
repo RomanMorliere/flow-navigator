@@ -1,17 +1,20 @@
 import { Link } from "react-router-dom";
-import { type Artist } from "@/data/mash";
+import { getSectorConfig, type Artist, type SectorId } from "@/data/mash";
 
 type ArtistRailProps = {
   artists: Artist[];
+  sector: SectorId;
 };
 
-export function ArtistRail({ artists }: ArtistRailProps) {
+export function ArtistRail({ artists, sector }: ArtistRailProps) {
+  const config = getSectorConfig(sector);
+
   return (
     <div className="flex gap-4 overflow-x-auto pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {artists.map((artist) => (
         <article
           key={artist.slug}
-          className="group w-[260px] shrink-0 rounded-[1.75rem] border border-foreground/10 bg-white/75 p-4 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur transition hover:-translate-y-1"
+          className={`group w-[260px] shrink-0 rounded-[1.75rem] border p-4 shadow-[0_18px_40px_rgba(0,0,0,0.10)] transition hover:-translate-y-1 ${config.cardTint} ${config.borderTone}`}
         >
           <img
             src={artist.image}
@@ -19,14 +22,14 @@ export function ArtistRail({ artists }: ArtistRailProps) {
             className="h-52 w-full rounded-[1.25rem] object-cover"
           />
           <div className="mt-4">
-            <p className="text-[11px] uppercase tracking-[0.3em] text-foreground/45">{artist.role}</p>
-            <h3 className="mt-2 text-2xl font-semibold text-foreground">{artist.name}</h3>
+            <p className={`text-[11px] uppercase tracking-[0.3em] ${config.mutedTone}`}>{artist.role}</p>
+            <h3 className={`mt-2 text-2xl font-semibold ${config.textTone}`}>{artist.name}</h3>
             {artist.accent ? (
-              <p className="mt-3 text-xs uppercase tracking-[0.3em] text-foreground/45">{artist.accent}</p>
+              <p className={`mt-3 text-xs uppercase tracking-[0.3em] ${config.mutedTone}`}>{artist.accent}</p>
             ) : null}
             <Link
               to={`/artists/${artist.slug}`}
-              className="mt-5 inline-flex rounded-full border border-foreground/15 px-4 py-2 text-sm transition hover:bg-foreground hover:text-background"
+              className={`mt-5 inline-flex rounded-full px-4 py-2 text-sm transition hover:opacity-85 ${config.buttonTone}`}
             >
               View Details
             </Link>

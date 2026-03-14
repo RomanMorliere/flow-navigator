@@ -44,39 +44,51 @@ export const SECTORS: Array<{
   pageName: string;
   sectionTint: string;
   surfaceTint: string;
+  cardTint: string;
+  mediaTint: string;
   borderTone: string;
   textTone: string;
   buttonTone: string;
+  mutedTone: string;
 }> = [
   {
     id: "art",
     shortLabel: "Art",
     pageName: "Art",
-    sectionTint: "from-[#A2C5D8] via-[#d5e5ee] to-[#eef5f8]",
-    surfaceTint: "bg-[#edf5f9]/80",
-    borderTone: "border-[#25799B]/20",
+    sectionTint: "bg-[#A2C5D8]",
+    surfaceTint: "bg-[#F7E6CB]",
+    cardTint: "bg-[#f3efe5]",
+    mediaTint: "bg-[#25799B]",
+    borderTone: "border-[#25799B]/35",
     textTone: "text-[#25799B]",
     buttonTone: "bg-[#25799B] text-white",
+    mutedTone: "text-[#25799B]/70",
   },
   {
     id: "music",
     shortLabel: "DJ",
     pageName: "DJ",
-    sectionTint: "from-[#F7E6CB] via-[#fbf1df] to-[#fff9ef]",
-    surfaceTint: "bg-[#fffaf1]/82",
-    borderTone: "border-[#CB1B03]/14",
+    sectionTint: "bg-[#F7E6CB]",
+    surfaceTint: "bg-[#A2C5D8]",
+    cardTint: "bg-[#fff3dc]",
+    mediaTint: "bg-[#CB1B03]",
+    borderTone: "border-[#CB1B03]/28",
     textTone: "text-[#CB1B03]",
     buttonTone: "bg-[#CB1B03] text-white",
+    mutedTone: "text-[#CB1B03]/72",
   },
   {
     id: "fashion",
     shortLabel: "Fashion",
     pageName: "Fashion",
-    sectionTint: "from-[#CB1B03] via-[#df4a36] to-[#f3b9b1]",
-    surfaceTint: "bg-[#fff3f1]/84",
-    borderTone: "border-[#CB1B03]/20",
+    sectionTint: "bg-[#CB1B03]",
+    surfaceTint: "bg-[#F7E6CB]",
+    cardTint: "bg-[#f6d8d2]",
+    mediaTint: "bg-[#25799B]",
+    borderTone: "border-[#F7E6CB]/40",
     textTone: "text-[#CB1B03]",
     buttonTone: "bg-[#25799B] text-white",
+    mutedTone: "text-[#F7E6CB]/88",
   },
 ];
 

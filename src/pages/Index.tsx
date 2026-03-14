@@ -8,6 +8,7 @@ const Index = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [edgeHover, setEdgeHover] = useState<"left" | "right" | null>(null);
+  const [activeScrollTop, setActiveScrollTop] = useState(0);
 
   const moveTo = useCallback(
     (nextIndex: number) => {
@@ -17,6 +18,7 @@ const Index = () => {
 
       setIsTransitioning(true);
       setCurrentIndex(nextIndex);
+      setActiveScrollTop(0);
       window.setTimeout(() => setIsTransitioning(false), 650);
     },
     [isTransitioning],
@@ -46,7 +48,11 @@ const Index = () => {
         </div>
       </header>
 
-      <div className="pointer-events-none fixed left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+      <div
+        className={`pointer-events-none fixed left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2 transition-all duration-300 ${
+          activeScrollTop > 80 ? "opacity-0 scale-90" : "opacity-100 scale-100"
+        }`}
+      >
         <img
           src={mashLogo}
           alt="MASH logo"
@@ -86,6 +92,7 @@ const Index = () => {
           <SectorPanel
             key={section.id}
             sector={section.id}
+            onScrollChange={section.id === SECTORS[currentIndex].id ? setActiveScrollTop : undefined}
           />
         ))}
       </div>
