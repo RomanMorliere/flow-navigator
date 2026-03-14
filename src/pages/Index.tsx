@@ -37,7 +37,16 @@ const Index = () => {
       }}
       onMouseLeave={() => setEdgeHover(null)}
     >
-      <div className="pointer-events-none fixed left-1/2 top-5 z-40 -translate-x-1/2 md:top-7">
+      <header className="pointer-events-none fixed left-0 top-0 z-40 flex w-full items-center justify-between px-5 py-5 md:px-8">
+        <div className="rounded-full border border-foreground/10 bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.35em] text-foreground/60">
+          MASH
+        </div>
+        <div className="rounded-full border border-foreground/10 bg-white/70 px-5 py-2 text-xs uppercase tracking-[0.35em] text-foreground/70">
+          {SECTORS[currentIndex].pageName}
+        </div>
+      </header>
+
+      <div className="pointer-events-none fixed left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
         <img
           src={mashLogo}
           alt="MASH logo"
@@ -48,7 +57,7 @@ const Index = () => {
       {currentIndex > 0 ? (
         <button
           onClick={() => moveTo(currentIndex - 1)}
-          className={`fixed left-4 top-1/2 z-40 -translate-y-1/2 rounded-full border border-foreground/10 bg-white/80 p-3 text-foreground shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-200 md:left-6 ${
+          className={`fixed left-4 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#25799B]/20 bg-[#25799B] p-3 text-white shadow-[0_10px_40px_rgba(37,121,155,0.24)] transition-all duration-200 md:left-6 ${
             edgeHover === "left" ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-90"
           }`}
           aria-label="Previous sector"
@@ -60,7 +69,7 @@ const Index = () => {
       {currentIndex < SECTORS.length - 1 ? (
         <button
           onClick={() => moveTo(currentIndex + 1)}
-          className={`fixed right-4 top-1/2 z-40 -translate-y-1/2 rounded-full border border-foreground/10 bg-white/80 p-3 text-foreground shadow-[0_10px_40px_rgba(0,0,0,0.08)] transition-all duration-200 md:right-6 ${
+          className={`fixed right-4 top-1/2 z-40 -translate-y-1/2 rounded-full border border-[#CB1B03]/20 bg-[#CB1B03] p-3 text-white shadow-[0_10px_40px_rgba(203,27,3,0.24)] transition-all duration-200 md:right-6 ${
             edgeHover === "right" ? "opacity-100 scale-100" : "pointer-events-none opacity-0 scale-90"
           }`}
           aria-label="Next sector"
@@ -73,7 +82,7 @@ const Index = () => {
         className="flex h-full transition-transform duration-700"
         style={{ width: `${SECTORS.length * 100}vw`, transform: `translateX(-${currentIndex * 100}vw)` }}
       >
-        {SECTORS.map((section, index) => (
+        {SECTORS.map((section) => (
           <SectorPanel
             key={section.id}
             sector={section.id}

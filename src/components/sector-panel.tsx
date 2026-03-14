@@ -26,16 +26,16 @@ export function SectorPanel({ sector }: SectorPanelProps) {
           <div className="h-screen" />
 
           <div className="space-y-8">
-            <section className={`rounded-[2rem] border bg-white/35 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.04)] ${config.borderTone}`}>
+            <section className={`rounded-[2rem] border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.04)] ${config.surfaceTint} ${config.borderTone}`}>
               <div className="mb-5">
-                <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">{config.shortLabel} Artists</p>
+                <p className={`text-xs uppercase tracking-[0.35em] ${config.textTone}`}>{config.shortLabel} Artists</p>
               </div>
               <ArtistRail artists={artists} />
             </section>
 
-            <section className={`rounded-[2rem] border bg-white/35 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.04)] ${config.borderTone}`}>
+            <section className={`rounded-[2rem] border p-6 shadow-[0_20px_60px_rgba(0,0,0,0.04)] ${config.surfaceTint} ${config.borderTone}`}>
               <div className="mb-5">
-                <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">{config.shortLabel} Events</p>
+                <p className={`text-xs uppercase tracking-[0.35em] ${config.textTone}`}>{config.shortLabel} Events</p>
               </div>
               <EventRail events={events} />
             </section>

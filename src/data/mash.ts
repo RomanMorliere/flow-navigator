@@ -41,41 +41,42 @@ export const CONTACT = {
 export const SECTORS: Array<{
   id: SectorId;
   shortLabel: string;
-  title: string;
-  eyebrow: string;
-  description: string;
+  pageName: string;
   sectionTint: string;
+  surfaceTint: string;
   borderTone: string;
+  textTone: string;
+  buttonTone: string;
 }> = [
   {
     id: "art",
     shortLabel: "Art",
-    title: "Art concepts, visual interventions, and spatial stories.",
-    eyebrow: "Left Panel",
-    description:
-      "This page keeps the same flow as the others, but focused on art-facing concepts, installations, and hybrid formats already present in the MASH language.",
-    sectionTint: "from-[#d7e3da] via-[#edf3ef] to-[#f6f2e8]",
-    borderTone: "border-emerald-900/15",
+    pageName: "Art",
+    sectionTint: "from-[#A2C5D8] via-[#d5e5ee] to-[#eef5f8]",
+    surfaceTint: "bg-[#edf5f9]/80",
+    borderTone: "border-[#25799B]/20",
+    textTone: "text-[#25799B]",
+    buttonTone: "bg-[#25799B] text-white",
   },
   {
     id: "music",
     shortLabel: "DJ",
-    title: "DJ curation, club lineups, and the MASH music network.",
-    eyebrow: "Center Panel",
-    description:
-      "The center page is the music page: artists cards, events cards, and contact. It stays aligned with the fixed logo while each section scrolls vertically.",
-    sectionTint: "from-[#f6f2e8] via-[#efe5cb] to-[#f5efe1]",
-    borderTone: "border-stone-950/10",
+    pageName: "DJ",
+    sectionTint: "from-[#F7E6CB] via-[#fbf1df] to-[#fff9ef]",
+    surfaceTint: "bg-[#fffaf1]/82",
+    borderTone: "border-[#CB1B03]/14",
+    textTone: "text-[#CB1B03]",
+    buttonTone: "bg-[#CB1B03] text-white",
   },
   {
     id: "fashion",
     shortLabel: "Fashion",
-    title: "Fashion labels, styling partners, and visual identities.",
-    eyebrow: "Right Panel",
-    description:
-      "This page mirrors the others with fashion-specific cards and the shared events/contact structure, so mixed concepts can live in more than one sector.",
-    sectionTint: "from-[#f0d4ca] via-[#f5e5de] to-[#fbf4ef]",
-    borderTone: "border-rose-950/15",
+    pageName: "Fashion",
+    sectionTint: "from-[#CB1B03] via-[#df4a36] to-[#f3b9b1]",
+    surfaceTint: "bg-[#fff3f1]/84",
+    borderTone: "border-[#CB1B03]/20",
+    textTone: "text-[#CB1B03]",
+    buttonTone: "bg-[#25799B] text-white",
   },
 ];
 
