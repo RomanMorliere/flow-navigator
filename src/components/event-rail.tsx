@@ -23,9 +23,7 @@ export function EventRail({ events }: EventRailProps) {
               {event.status === "coming" ? "Coming Soon" : "Past Event"}
             </p>
             <h3 className="mt-2 text-2xl font-semibold text-foreground">{event.title}</h3>
-            <p className="mt-2 text-sm leading-6 text-foreground/70">{event.subtitle}</p>
             <p className="mt-4 text-sm text-foreground/65">{event.dateShort}</p>
-            <p className="text-sm text-foreground/65">{event.venue}</p>
             <Link
               to={`/events/${event.slug}`}
               className="mt-5 inline-flex rounded-full border border-foreground/15 px-4 py-2 text-sm transition hover:bg-foreground hover:text-background"

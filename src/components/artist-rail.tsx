@@ -21,7 +21,6 @@ export function ArtistRail({ artists }: ArtistRailProps) {
           <div className="mt-4">
             <p className="text-[11px] uppercase tracking-[0.3em] text-foreground/45">{artist.role}</p>
             <h3 className="mt-2 text-2xl font-semibold text-foreground">{artist.name}</h3>
-            <p className="mt-2 min-h-12 text-sm leading-6 text-foreground/70">{artist.tagline}</p>
             {artist.accent ? (
               <p className="mt-3 text-xs uppercase tracking-[0.3em] text-foreground/45">{artist.accent}</p>
             ) : null}

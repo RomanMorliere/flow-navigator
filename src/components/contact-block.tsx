@@ -41,14 +41,11 @@ export function ContactBlock({ sector }: ContactBlockProps) {
   }
 
   return (
-    <section className="rounded-[2rem] border border-foreground/10 bg-white/70 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.08)] backdrop-blur">
+    <section className="rounded-[2rem] border border-foreground/10 bg-white/35 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.04)]">
       <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs uppercase tracking-[0.35em] text-foreground/45">Contact Us</p>
-          <h3 className="mt-2 text-2xl font-semibold text-foreground">Book MASH for {sector}</h3>
-          <p className="mt-2 max-w-xl text-sm leading-6 text-foreground/70">
-            Curation, programming, hybrid events, and cross-city collaborations.
-          </p>
+          <h3 className="mt-2 text-2xl font-semibold text-foreground">{sector}</h3>
         </div>
         <div className="flex flex-col items-start gap-2 text-sm">
           <a className="transition hover:opacity-70" href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
