@@ -1,124 +1,63 @@
-import { useState, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useCallback, useState } from "react";
 import mashLogo from "@/assets/mash_logo.svg";
-
-const sections = [
-  { id: "dj", label: "DJ" },
-  { id: "home", label: "Home" },
-  { id: "events", label: "Events" },
-];
+import { SectorPanel } from "@/components/sector-panel";
+import { SECTORS } from "@/data/mash";
 
 const Index = () => {
-  const [currentIndex, setCurrentIndex] = useState(1); // Start on center (home)
+  const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const slideTo = useCallback(
-    (direction: -1 | 1) => {
-      const next = currentIndex + direction;
-      if (next < 0 || next > 2 || isTransitioning) return;
+  const moveTo = useCallback(
+    (nextIndex: number) => {
+      if (nextIndex < 0 || nextIndex >= SECTORS.length || isTransitioning) {
+        return;
+      }
+
       setIsTransitioning(true);
-      setCurrentIndex(next);
-      setTimeout(() => setIsTransitioning(false), 600);
+      setCurrentIndex(nextIndex);
+      window.setTimeout(() => setIsTransitioning(false), 650);
     },
-    [currentIndex, isTransitioning]
+    [isTransitioning],
   );
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-background">
-      {/* Fixed centered logo */}
-      <div className="pointer-events-none fixed inset-0 z-30 flex items-center justify-center">
-        <img
-          src={mashLogo}
-          alt="MASH Logo"
-          className="w-40 h-auto drop-shadow-lg"
-        />
+      <div className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center">
+        <div className="flex h-44 w-44 items-center justify-center rounded-full border border-white/50 bg-white/30 shadow-[0_30px_90px_rgba(0,0,0,0.12)] backdrop-blur-xl md:h-52 md:w-52">
+          <img src={mashLogo} alt="MASH logo" className="w-28 drop-shadow-lg md:w-32" />
+        </div>
       </div>
 
-      {/* Navigation arrows */}
-      {currentIndex > 0 && (
-        <button
-          onClick={() => slideTo(-1)}
-          className="fixed left-6 top-1/2 z-40 -translate-y-1/2 rounded-full bg-foreground/10 p-3 backdrop-blur-sm transition-all duration-300 hover:bg-foreground/20 hover:scale-110"
-          aria-label="Section précédente"
-        >
-          <ChevronLeft className="h-6 w-6 text-foreground" />
-        </button>
-      )}
+      <div className="pointer-events-none fixed left-1/2 top-6 z-40 -translate-x-1/2 rounded-full border border-white/50 bg-white/35 px-4 py-2 text-xs uppercase tracking-[0.35em] text-foreground/60 backdrop-blur-xl">
+        {SECTORS[currentIndex].shortLabel}
+      </div>
 
-      {currentIndex < 2 && (
-        <button
-          onClick={() => slideTo(1)}
-          className="fixed right-6 top-1/2 z-40 -translate-y-1/2 rounded-full bg-foreground/10 p-3 backdrop-blur-sm transition-all duration-300 hover:bg-foreground/20 hover:scale-110"
-          aria-label="Section suivante"
-        >
-          <ChevronRight className="h-6 w-6 text-foreground" />
-        </button>
-      )}
-
-      {/* Dot indicators */}
-      <div className="fixed bottom-8 left-1/2 z-40 flex -translate-x-1/2 gap-3">
-        {sections.map((s, i) => (
+      <div className="fixed bottom-7 left-1/2 z-40 flex -translate-x-1/2 gap-3">
+        {SECTORS.map((section, index) => (
           <button
-            key={s.id}
-            onClick={() => {
-              if (!isTransitioning) {
-                setIsTransitioning(true);
-                setCurrentIndex(i);
-                setTimeout(() => setIsTransitioning(false), 600);
-              }
-            }}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              i === currentIndex
-                ? "w-8 bg-foreground"
-                : "w-2 bg-foreground/30 hover:bg-foreground/50"
+            key={section.id}
+            onClick={() => moveTo(index)}
+            className={`rounded-full transition-all duration-500 ${
+              index === currentIndex ? "h-2 w-10 bg-foreground" : "h-2 w-2 bg-foreground/25 hover:bg-foreground/45"
             }`}
-            aria-label={s.label}
+            aria-label={section.shortLabel}
           />
         ))}
       </div>
 
-      {/* Sliding panels */}
       <div
-        className="flex h-full transition-transform duration-600 ease-[cubic-bezier(0.25,0.1,0.25,1)]"
-        style={{
-          width: "300vw",
-          transform: `translateX(-${currentIndex * 100}vw)`,
-          transitionDuration: "600ms",
-        }}
+        className="flex h-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+        style={{ width: `${SECTORS.length * 100}vw`, transform: `translateX(-${currentIndex * 100}vw)` }}
       >
-        {/* DJ Section */}
-        <section className="flex h-full w-screen items-center justify-center bg-jelly-bean">
-          <div className="text-center">
-            <h2 className="mb-4 text-6xl font-bold tracking-tight text-primary-foreground">
-              DJ
-            </h2>
-            <p className="text-lg text-primary-foreground/70">
-              Sets · Mixes · Live
-            </p>
-          </div>
-        </section>
-
-        {/* Home / Center Section */}
-        <section className="flex h-full w-screen items-center justify-center bg-sidecar">
-          <div className="text-center">
-            <div className="h-40" /> {/* Space for logo */}
-            <p className="mt-8 text-lg tracking-widest uppercase text-foreground/50">
-              Explore
-            </p>
-          </div>
-        </section>
-
-        {/* Third Section */}
-        <section className="flex h-full w-screen items-center justify-center bg-milan-red">
-          <div className="text-center">
-            <h2 className="mb-4 text-6xl font-bold tracking-tight text-primary-foreground">
-              Events
-            </h2>
-            <p className="text-lg text-primary-foreground/70">
-              Agenda · Dates · Lieux
-            </p>
-          </div>
-        </section>
+        {SECTORS.map((section, index) => (
+          <SectorPanel
+            key={section.id}
+            sector={section.id}
+            isCenter={index === 1}
+            onPrev={index > 0 ? () => moveTo(index - 1) : undefined}
+            onNext={index < SECTORS.length - 1 ? () => moveTo(index + 1) : undefined}
+          />
+        ))}
       </div>
     </div>
   );
