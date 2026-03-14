@@ -14,15 +14,17 @@ export function EventRail({ events, sector }: EventRailProps) {
       {events.map((event) => (
         <article
           key={event.slug}
-          className={`w-[320px] shrink-0 rounded-[1.75rem] border p-4 shadow-[0_18px_40px_rgba(0,0,0,0.10)] ${config.cardTint} ${config.borderTone}`}
+          className={`w-[320px] shrink-0 rounded-[1.9rem] border p-4 shadow-[0_18px_40px_rgba(0,0,0,0.10)] ${config.cardTint} ${config.borderTone}`}
         >
-          <img
-            src={event.flyer}
-            alt={event.title}
-            className="h-56 w-full rounded-[1.25rem] object-cover"
-          />
+          <div className={`rounded-[1.45rem] p-2 ${config.mediaTint}`}>
+            <img
+              src={event.flyer}
+              alt={event.title}
+              className="h-56 w-full rounded-[1.1rem] object-cover"
+            />
+          </div>
           <div className="mt-4">
-            <p className={`text-[11px] uppercase tracking-[0.3em] ${config.mutedTone}`}>
+            <p className={`inline-flex rounded-full border px-3 py-1 text-[11px] uppercase tracking-[0.24em] ${config.borderTone} ${config.mutedTone}`}>
               {event.status === "coming" ? "Coming Soon" : "Past Event"}
             </p>
             <h3 className={`mt-2 text-2xl font-semibold ${config.textTone}`}>{event.title}</h3>

@@ -60,7 +60,7 @@ export function ContactBlock({ sector }: ContactBlockProps) {
         <label className={`grid gap-2 text-sm ${config.textTone}`}>
           <span>Your Email</span>
           <input
-            className="h-12 rounded-full border border-[#25799B]/30 bg-white px-5 outline-none transition focus:border-[#CB1B03]"
+            className={`h-12 rounded-full border bg-white/95 px-5 outline-none transition ${config.borderTone} focus:border-current ${config.textTone}`}
             name="email"
             type="email"
             required
@@ -70,7 +70,7 @@ export function ContactBlock({ sector }: ContactBlockProps) {
         <label className={`grid gap-2 text-sm md:col-span-2 ${config.textTone}`}>
           <span>Message</span>
           <textarea
-            className="min-h-36 rounded-[1.5rem] border border-[#25799B]/30 bg-white px-5 py-4 outline-none transition focus:border-[#CB1B03]"
+            className={`min-h-36 rounded-[1.5rem] border bg-white/95 px-5 py-4 outline-none transition ${config.borderTone} focus:border-current ${config.textTone}`}
             name="message"
             required
           />
